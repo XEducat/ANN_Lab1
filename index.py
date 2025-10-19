@@ -1,11 +1,16 @@
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Dense
+import torch
+import torch.nn as nn
 
-# Створюємо модель
-model = Sequential()
+# Створення нейронної мережі
+class SimpleNN(nn.Module):
+     def __init__(self):
+         super(SimpleNN, self).__init__()
+         self.fc = nn.Linear(1, 1)
+     def forward(self, x):
+        return self.fc(x)
 
-# Додаємо шар з одним нейроном
-model.add(Dense(1, input_shape=(1,)))
+# Ініціалізація моделі
+model = SimpleNN()
 
 # Огляд структури моделі
-model.summary()
+print(model)
